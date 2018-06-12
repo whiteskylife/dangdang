@@ -31,3 +31,4 @@ class MongoPipeline(object):
 
     def close_spider(self, spider):
         self.client.close()
+
