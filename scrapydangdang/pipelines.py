@@ -57,3 +57,6 @@ class DangDangCsvPipeline(object):
             self.logger.info('--------------存储csv失败-----------------------！')
 
         return item
+
+    def close_spider(self, spider):
+        self.filename.close()
