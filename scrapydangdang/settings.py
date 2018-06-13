@@ -65,7 +65,8 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'scrapydangdang.pipelines.MongoPipeline': 300,
+   # 'scrapydangdang.pipelines.MongoPipeline': 300,
+   'scrapydangdang.pipelines.DangDangCsvPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -93,3 +94,4 @@ PAGE = 36
 
 MONGO_URI = '192.168.1.110'
 MONGO_DB = 'dangdang'
+
