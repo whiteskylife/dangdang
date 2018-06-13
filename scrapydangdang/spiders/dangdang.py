@@ -15,7 +15,7 @@ class DangdangSpider(scrapy.Spider):
         keyword = self.settings.get('KEYWORD')
         # self.logger.info('------------------------ ', pages, type(pages))
         for page in range(1, pages + 1):
-            data = {'key': keyword, 'act': 'input', 'page_index': pages}
+            data = {'key': keyword, 'act': 'input', 'page_index': page}
             base_url = 'http://search.dangdang.com/?'
             params = urlencode(data)
             url = base_url + params
