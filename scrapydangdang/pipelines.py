@@ -6,7 +6,6 @@
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 import pymongo
-import csv
 
 
 class ScrapydangdangPipeline(object):
@@ -39,6 +38,7 @@ class MongoPipeline(object):
 
 from scrapydangdang.items import DangdangItem
 import logging
+import csv
 
 class DangDangCsvPipeline(object):
     def __init__(self):
@@ -46,12 +46,11 @@ class DangDangCsvPipeline(object):
         self.filename = open('data.csv', 'a', encoding='utf-8')
         self.logger = logging.getLogger('__name__')
         fieldnames = [ item for item in self.items]
-        self.logger.info('This is  detail for  [ item for item in self.items] %s '% fieldnames)
-        self.writer = csv.DictWriter(self.filename, fieldnames=fieldnames)
-        self._writer = self.writer.writeheader()
+        self.__writer = csv.DictWriter(self.filename, fieldnames=fieldnames)
+        self.__writer = self.__writer.writeheader()
 
     def process_item(self, item, spider):
-        if self.writer.writerow(dict(item)):
+        if self.__writer.writerow(dict(item)):
             self.logger.info('--------------存储到csv成功-----------------------！')
         else:
             self.logger.info('--------------存储csv失败-----------------------！')
